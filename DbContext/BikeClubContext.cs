@@ -17,7 +17,7 @@ public class BikeClubContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Server=BLABLABLA;database=BikeClub;Integrated Security=True;TrustServerCertificate=True;");
+        optionsBuilder.UseSqlServer("Server=DESKTOP-JMHGGNP;database=BikeClub;Integrated Security=True;TrustServerCertificate=True;");
         base.OnConfiguring(optionsBuilder);
     }
 

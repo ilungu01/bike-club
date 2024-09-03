@@ -12,8 +12,8 @@ using bike_club.DbContext;
 namespace bike_club.Migrations
 {
     [DbContext(typeof(BikeClubContext))]
-    [Migration("20240903180428_InitialCreateOfDb")]
-    partial class InitialCreateOfDb
+    [Migration("20240903215637_AddCascadeDeletionForSchemes")]
+    partial class AddCascadeDeletionForSchemes
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -112,9 +112,11 @@ namespace bike_club.Migrations
 
             modelBuilder.Entity("bike_club.Models.MRole", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -159,8 +161,8 @@ namespace bike_club.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("RoleId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Username")
                         .IsRequired()
