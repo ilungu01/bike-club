@@ -10,7 +10,7 @@ namespace bike_club.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public Guid RoleId { get; set; }
+        public int RoleId { get; set; }
         public MRole Role { get; set; }
         public ICollection<MBike> Bike { get; set; }
         public ICollection<MMembership> Memberships { get; set; }

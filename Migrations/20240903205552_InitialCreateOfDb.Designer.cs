@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using bike_club.DbContext;
 
@@ -11,9 +12,11 @@ using bike_club.DbContext;
 namespace bike_club.Migrations
 {
     [DbContext(typeof(BikeClubContext))]
-    partial class BikeClubContextModelSnapshot : ModelSnapshot
+    [Migration("20240903205552_InitialCreateOfDb")]
+    partial class InitialCreateOfDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

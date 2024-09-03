@@ -23,13 +23,16 @@ namespace bike_club.DbContext.Schemes
                 .HasMaxLength(100);
             builder.HasOne(u => u.Role)
                 .WithMany(r => r.Users)
-                .HasForeignKey(u => u.RoleId);
+                .HasForeignKey(u => u.RoleId)
+                .OnDelete(DeleteBehavior.Cascade);
             builder.HasMany(u => u.Bike)
-                .WithOne(b => b.User)  
-                .HasForeignKey(b => b.UserId);
+                .WithOne(b => b.User)
+                .HasForeignKey(b => b.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
             builder.HasMany(u => u.Memberships)
                 .WithOne(b => b.User)
-                .HasForeignKey(b => b.UserId);
+                .HasForeignKey(b => b.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
