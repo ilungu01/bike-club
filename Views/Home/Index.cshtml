@@ -6,8 +6,8 @@
     </div>
     <div class="row gx-5">
         <div class="col">
-            <a class="btn btn-primary d-flex justify-content-center align-items-center" asp-controller="" asp-action="Index">
-                Look at the members of the club
+            <a class="btn btn-primary d-flex justify-content-center align-items-center" asp-controller="Home" asp-action="Index">
+                View who is in the club
             </a>
         </div>
         <div class="col">
@@ -15,6 +15,13 @@
                asp-controller="Login"
                asp-action="Index">
                 Login into your account
+            </a>
+        </div>
+        <div class="col">
+            <a class="btn btn-info d-flex justify-content-center align-items-center"
+               asp-controller="User"
+               asp-action="Register">
+                Register
             </a>
         </div>
     </div>
