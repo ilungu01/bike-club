@@ -1,0 +1,24 @@
+﻿@model MUser
+
+<form asp-controller="Login" asp-action="Index" method="post" role="form" class="w-50">
+
+    <div class="mb-3">
+        <h4>Login</h4>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label">Email</label>
+        <div>
+            <input asp-for="Email" type="email" class="form-control" id="email" aria-describedby="emailHelp">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label asp-for="PasswordHash" class="form-label">Password</label>
+        <div>
+            <input asp-for="PasswordHash" type="password" class="form-control" id="password">
+            <span asp-validation-for="PasswordHash" class="text-danger"></span>
+        </div>
+    </div>
+    <button type="submit" asp-action="Index" class="btn btn-primary">Submit</button>
+    <button type="submit" asp-action="Register" class="btn btn-primary">Register</button>
+</form>

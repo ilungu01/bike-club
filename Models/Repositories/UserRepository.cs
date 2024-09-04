@@ -19,32 +19,59 @@ namespace bike_club.Models.Repositories
             return GetById(entity.Id);
         }
 
-        public void Update(MUser entity)
+        public MUser Update(MUser entity)
         {
-            throw new NotImplementedException();
+            var userToUpdate = GetById(entity.Id);
+            _context.Entry(userToUpdate).CurrentValues.SetValues(entity);
+            _context.SaveChanges();
+
+            using var secondContext = new BikeClubContext();
+            if (entity.Bike?.Count > 0)
+            {
+                userToUpdate.Bike?.Clear();
+                foreach (var bike in entity.Bike)
+                {
+                    secondContext.Entry(bike).State = EntityState.Unchanged;
+                    userToUpdate.Bike?.Add(bike);
+                }
+            }
+
+            if (entity.Memberships?.Count > 0)
+            {
+                userToUpdate.Memberships?.Clear();
+                foreach (var membership in entity.Memberships)
+                {
+                    secondContext.Entry(membership).State = EntityState.Unchanged;
+                    userToUpdate.Memberships?.Add(membership);
+                }
+            }
+
+            secondContext.Attach(userToUpdate);
+            secondContext.SaveChanges();
+            return GetById(entity.Id);
         }
 
         public string Delete(MUser entity)
         {
-            var userToDelete = _context.Users.FirstOrDefault(user => user.Id == entity.Id);
+            var userToDelete = GetById(entity.Id);
             _context.Users.Remove(userToDelete);
             _context.SaveChanges();
-            return _context.Users.FirstOrDefault(user => user.Id == entity.Id).Id == entity.Id ? "Wasn't deleted" : "Was successfully deleted!";
+            return userToDelete.Id == entity.Id ? "Wasn't deleted" : "Was successfully deleted!";
         }
 
         public MUser GetById(Guid id)
         {
             var user = _context.Users.Include(bike => bike.Bike)
                 .Include(membership => membership.Memberships)
-                .FirstOrDefault(user => user.Id == id);
+                .First(user => user.Id == id);
             return user;
         }
 
-        public MUser GetByTerm(string firstName, string lastName)
+        public MUser GetByTerm(string email, string password)
         {
             var user = _context.Users.Include(bike => bike.Bike)
                 .Include(membership => membership.Memberships)
-                .FirstOrDefault(user => (user.FirstName == firstName && user.LastName == lastName));
+                .FirstOrDefault(user => (user.Email == email && user.PasswordHash== password));
             return user;
         }
 

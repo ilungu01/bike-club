@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model bike_club.ViewModels.LoginViewModel
+
+<div class="container mt-5">
+    <a class="btn btn-info"
+       asp-controller="Login"
+       asp-action="Admin">
+    </a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">First name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Date of birth</th>
+                <th scope="col">Role</th>
+                <th scope="col">Update users info</th>
+                <th scope="col">Delete the user</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.Users)
+            {
+                <tr>
+                    <th>@user.Id</th>
+                    <th>@user.FirstName</th>
+                    <td>@user.LastName</td>
+                    <td>@user.Email</td>
+                    <td>@user.DateOfBirth</td>
+                    <td>@user.Role.Name</td>
+                <td>
+                    <a class="btn btn-warning"
+                       asp-controller="User"
+                       asp-action="Update"
+                       asp-route-userId="@user.Id">
+                        Update users info
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-danger"
+                       asp-controller="User"
+                       asp-action="Delete"
+                       asp-route-userId="@user.Id">
+                        Delete
+                    </a>
+                </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-warning"
+       asp-controller="Home"
+       asp-action="Index">
+        Log out
+    </a>
+</div>

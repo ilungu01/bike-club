@@ -21,4 +21,17 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\User\Update.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Login\Update.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\User\Update.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Login\Update.cshtml" />
+  </ItemGroup>
+
 </Project>
