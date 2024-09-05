@@ -8,27 +8,27 @@
     </a>
     <table class="table table-striped">
         <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">First name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Date of birth</th>
-                <th scope="col">Role</th>
-                <th scope="col">Update users info</th>
-                <th scope="col">Delete the user</th>
-            </tr>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Date of birth</th>
+            <th scope="col">Role</th>
+            <th scope="col">Update users info</th>
+            <th scope="col">Delete the user</th>
+        </tr>
         </thead>
         <tbody>
-            @foreach (var user in Model.Users)
-            {
-                <tr>
-                    <th>@user.Id</th>
-                    <th>@user.FirstName</th>
-                    <td>@user.LastName</td>
-                    <td>@user.Email</td>
-                    <td>@user.DateOfBirth</td>
-                    <td>@user.Role.Name</td>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <th>@user.Id</th>
+                <th>@user.FirstName</th>
+                <td>@user.LastName</td>
+                <td>@user.Email</td>
+                <td>@user.DateOfBirth</td>
+                <td>@user.Role</td>
                 <td>
                     <a class="btn btn-warning"
                        asp-controller="User"
@@ -45,8 +45,8 @@
                         Delete
                     </a>
                 </td>
-                </tr>
-            }
+            </tr>
+        }
         </tbody>
     </table>
     <a class="btn btn-warning"
@@ -55,3 +55,4 @@
         Log out
     </a>
 </div>
+\

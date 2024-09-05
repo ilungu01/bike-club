@@ -70,6 +70,7 @@ namespace bike_club.Models.Repositories
         public MUser GetByTerm(string email, string password)
         {
             var user = _context.Users.Include(bike => bike.Bike)
+                .Include(role => role.Role)
                 .Include(membership => membership.Memberships)
                 .FirstOrDefault(user => (user.Email == email && user.PasswordHash== password));
             return user;

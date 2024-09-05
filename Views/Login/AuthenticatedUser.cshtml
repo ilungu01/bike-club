@@ -1,0 +1,62 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model bike_club.ViewModels.LoginViewModel
+
+<div class="container mt-5">
+    <a class="btn btn-info"
+       asp-controller="Login"
+       asp-action="AuthenticatedUser">
+    </a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Username</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Model</th>
+            <th scope="col">Purchase date</th>
+            <th scope="col">Update bike info</th>
+            <th scope="col">Delete the bike</th>
+        </tr>
+        </thead>
+        <tbody>
+        @if (Model?.Bikes == null)
+        {
+            <a class="btn btn-warning" asp-controller="Bike" asp-action="Add" asp-route-id="@Model?.Users.First().Id">Add your first bike!</a>
+        }
+        else
+        {
+            <a class="btn btn-warning" asp-controller="Bike" asp-action="Add" asp-route-id="@Model?.Users.First().Id">Add your bike</a>
+            @foreach (var bike in Model.Bikes)
+                {
+                    <tr>
+                        <th>@bike.User.Username</th>
+                        <th>@bike.Brand</th>
+                        <td>@bike.Model</td>
+                        <td>@bike.PurchaseDate</td>
+                        <td>
+                            <a class="btn btn-warning"
+                               asp-controller="Bike"
+                               asp-action="Update"
+                               asp-route-bikeId="@bike.Id">
+                                Update bikes info
+                            </a>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger"
+                               asp-controller="Bike"
+                               asp-action="Delete"
+                               asp-route-bikeId="@bike.Id">
+                                Delete the bike from collection
+                            </a>
+                        </td>
+                    </tr>
+                }
+        }
+        
+        </tbody>
+    </table>
+    <a class="btn btn-warning"
+       asp-controller="Home"
+       asp-action="Index">
+        Log out
+    </a>
+</div>

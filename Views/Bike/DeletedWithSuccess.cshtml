@@ -1,0 +1,12 @@
+﻿@model MUser
+
+<div class="container">
+    <div class="row mb-5">
+        <h3 class="text-center fw-bold">Bike was deleted with success!</h3>
+    </div>
+    <div class="row d-flex justify-content-center align-items-center">
+        <a class="btn btn-primary w-50" asp-controller="Login" asp-action="AuthenticatedUser" asp-route-id="@Model.Id">
+            Back to the bikes list
+        </a>
+    </div>
+</div>

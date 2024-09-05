@@ -26,12 +26,32 @@
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Bike\AddedWithSuccess.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Bike\DeletedWithSuccess.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Bike\UpdatedWithSuccess.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Home\ViewMembers.cshtml" />
     <_ContentIncludedByDefault Remove="Views\Login\Update.cshtml" />
     <_ContentIncludedByDefault Remove="Views\User\Update.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Views\Login\Update.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Bike\AddedWithSuccess.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Home\ViewMembers.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Bike\UpdatedWithSuccess.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Bike\DeletedWithSuccess.cshtml" />
   </ItemGroup>
 
 </Project>

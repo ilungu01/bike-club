@@ -9,6 +9,7 @@ namespace bike_club.DbContext.Schemes
         public void Configure(EntityTypeBuilder<MBike> builder)
         {
             builder.HasKey(b => b.Id);
+            builder.Property(b => b.Id).ValueGeneratedOnAdd();
             builder.Property(b => b.Brand)
                 .IsRequired()
                 .HasMaxLength(100);
