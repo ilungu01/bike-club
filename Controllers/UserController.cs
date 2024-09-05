@@ -30,6 +30,19 @@ namespace bike_club.Controllers
             return View("DeletedWithSuccess");
         }
 
+        [HttpPost]
+        public IActionResult Register(MUser user)
+        {
+            var userToAdd = user;
+            userToAdd.Role = new MRole()
+            {
+                Name = "authenicated_user",
+                Description = "Authenticated user has access to modify his profile"
+            };
+            _userRepository.Add(userToAdd);
+            return RedirectToAction("CreatedWithSuccess");
+        }
+
         public IActionResult DeletedWithSuccess()
         {
             return View();
@@ -45,17 +58,5 @@ namespace bike_club.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Register(MUser user)
-        {
-            var userToAdd = user;
-            userToAdd.Role = new MRole()
-            {
-                Name = "authenicated_user",
-                Description = "Authenticated user has access to modify his profile"
-            };
-            _userRepository.Add(userToAdd);
-            return RedirectToAction("CreatedWithSuccess");
-        }
     }
 }

@@ -1,0 +1,35 @@
+﻿@model bike_club.ViewModels.HomeViewModel
+
+<div class="container mt-5">
+    <a class="btn btn-info"
+       asp-controller="Home"
+       asp-action="ViewMembers">
+    </a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">First name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Date of birth</th>
+                </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.Users)
+            {
+                <tr>
+                    <th>@user.FirstName</th>
+                    <td>@user.LastName</td>
+                    <td>@user.Email</td>
+                    <td>@user.DateOfBirth</td>
+                    <td>@user.Role</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a class="btn btn-warning"
+       asp-controller="Home"
+       asp-action="Index">
+        Home
+    </a>
+</div>

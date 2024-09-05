@@ -21,18 +21,18 @@ namespace bike_club.Models.Repositories
 
         public MBike Update(MBike entity)
         {
-            var bikeToUpdate = _context.Bikes.FirstOrDefault(bike => bike.Id == entity.Id);
-            _context.Entry(bikeToUpdate).CurrentValues.SetValues(bikeToUpdate);
+            var bikeToUpdate = _context.Bikes.First(bike => bike.Id == entity.Id);
+            _context.Entry(bikeToUpdate).CurrentValues.SetValues(entity);
             _context.SaveChanges();
             return GetById(entity.Id);
         }
 
         public string Delete(MBike entity)
         {
-            var bikeToDelete = _context.Bikes.FirstOrDefault(bike => bike.Id == entity.Id);
+            var bikeToDelete = _context.Bikes.First(bike => bike.Id == entity.Id);
             _context.Bikes.Remove(bikeToDelete);
             _context.SaveChanges();
-            return _context.Bikes.FirstOrDefault(bike => bike.Id == entity.Id).Id == entity.Id ? "Wasn't deleted" : "Was successfully deleted!";
+            return bikeToDelete.Id == entity.Id ? "Wasn't deleted" : "Was successfully deleted!";
         }
 
         public MBike GetById(Guid id)

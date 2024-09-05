@@ -32,9 +32,14 @@ namespace bike_club.Controllers
 
             var userFound = _userRepository.GetByTerm(user.Email, user.PasswordHash);
 
-            if (userFound.RoleId == 1)
+            if (userFound.Role.Name == "admin")
             {
                 return RedirectToAction("Admin");
+            }
+            
+            if (userFound.Role.Name == "authenicated_user") 
+            {
+                return RedirectToAction("AuthenticatedUser", new { id = userFound.Id });
             }
 
             return View(user);
@@ -57,9 +62,28 @@ namespace bike_club.Controllers
             return View(loginViewModel);
         }
 
-        public IActionResult Delete()
+        public IActionResult AuthenticatedUser(Guid id)
         {
-            return View();
+            List<MUser> users = new List<MUser>();
+            var foundUser = _userRepository.GetById(id);
+            users.Add(foundUser);
+            List<MBike> bikes = new List<MBike>();
+            if (users?.First()?.Bike?.Count > 0)
+            {
+                foreach (var bike in users?.First().Bike)
+                {
+                    bikes.Add(bike);
+                }
+            }
+
+
+            LoginViewModel loginViewModel = new LoginViewModel()
+            {
+                Users = users,
+                Bikes = bikes
+            };
+
+            return View(loginViewModel);
         }
     }
 }

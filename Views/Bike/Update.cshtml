@@ -1,0 +1,45 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model bike_club.ViewModels.BikeViewModel
+
+
+<div class="container w-50">
+    <form asp-controller="Bike" asp-action="Update" method="post" role="form">
+        <div class="row">
+            <div class="col">
+                <input asp-for="Bike.UserId" type="hidden" id="Bike.UserId">
+                <input asp-for="Bike.Id" type="hidden" id="Bike.Id">
+                <div class="mb-3">
+                    <label asp-for="Bike.Model" class="form-label">Bike Model</label>
+                    <input asp-for="Bike.Model" type="text" class="form-control" id="BikeModel" aria-describedby="BikeModel">
+                    <span asp-validation-for="Bike.Model" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <label asp-for="Bike.Brand" class="form-label">Brand</label>
+                    <input asp-for="Bike.Brand" type="text" class="form-control" id="Bike.Brand" aria-describedby="Bike.Brand">
+                    <span asp-validation-for="Bike.Brand" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label asp-for="Bike.PurchaseDate" class="form-label"></label>
+                    <input asp-for="Bike.PurchaseDate" type="text" class="form-control" id="Bike.PurchaseDate" aria-describedby="Bike.PurscaseDate">
+                    <span asp-validation-for="Bike.PurchaseDate" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <label asp-for="Bike.SerialNumber" class="form-label">Serial Number</label>
+                    <input asp-for="Bike.SerialNumber" type="text" class="form-control" id="Bike.SerialNumber" aria-describedby="Bike.SerialNumber">
+                    <span asp-validation-for="Bike.SerialNumber" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-warning">Update bike details</button>
+    </form>
+</div>
